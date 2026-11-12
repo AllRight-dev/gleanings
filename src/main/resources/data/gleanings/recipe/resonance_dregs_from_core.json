@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "gleanings:resonance_core"
+    }
+  ],
+  "result": {
+    "id": "gleanings:resonance_dregs",
+    "count": 1
+  }
+}

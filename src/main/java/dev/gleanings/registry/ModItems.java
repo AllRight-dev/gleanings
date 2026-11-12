@@ -1,7 +1,6 @@
 package dev.gleanings.registry;
 
 import dev.gleanings.Gleanings;
-import dev.gleanings.item.ResonanceCoreItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -23,8 +22,7 @@ public final class ModItems {
      * Grind it on a grindstone to get the dregs that actually carry enchantments.
      */
     public static final DeferredItem<Item> RESONANCE_CORE =
-            ITEMS.register("resonance_core",
-                    () -> new ResonanceCoreItem(new Item.Properties().rarity(Rarity.UNCOMMON)));
+            ITEMS.registerSimpleItem("resonance_core", new Item.Properties().rarity(Rarity.UNCOMMON));
 
     /**
      * An enchanted book with its enchantment held in amethyst instead of paper.
