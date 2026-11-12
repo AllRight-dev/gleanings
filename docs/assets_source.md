@@ -22,7 +22,8 @@
 | `textures/item/washed_rotten_flesh.png` | A | vanilla `item/rotten_flesh.png` → `tools/gen_texture.py`（去饱和 42% + 顶部冷色 + 三颗水珠） | — |
 | `textures/item/resonance_core.png` | A | vanilla `item/ender_pearl.png` → `tools/recolor.py`，目标色板取自 `item/amethyst_shard.png` | 早期版本派生自 Iron's Spellbooks（C 类），已废弃 |
 | `textures/item/resonance_tome.png` | A | vanilla `item/enchanted_book.png` → `tools/recolor.py --colors "#33124f,#5a2190,#8a3ad0,#b45cf0,#d89bff,#f4e0ff"` | 六档显式色阶，比取色板更鲜艳 |
-| `textures/item/resonance_dregs.png` | A | `tools/compose_pile.py`：vanilla `flint` + `amethyst_shard` 裁成碎片拼成一堆，套紫水晶色板 | 生成模型对"碎渣"无稳定先验（画成水晶簇或 3D 立方体），故改用拼贴 |
+| `textures/item/resonance_dregs.png` | **D** | 豆包（doubao.com，2026-11-12）生成 8 张候选，取第 4 张 → `tools/img2mc.py --size 16 --colors 10 --key-bg --crop` | 提示词：`画一个 Minecraft 物品图标：一堆紫水晶碎渣。不是晶体、不是水晶簇、不是方块，是被砸碎后的不规则碎粒和碎屑，七八块大小混杂、边缘参差不齐，随意堆成一小撮。深紫到浅紫，个别碎粒有细小反光点。斜向摆放，占画面约 45%，四周留白，不对称。像素画风格，16x16 像素格，纯色块，无渐变、无锯齿、无描边、无投影，白色背景。` 原始候选在 `tools/ref/doubao/` |
+| ~~`textures/item/resonance_dregs.png`（旧）~~ | ~~A~~ | `tools/compose_pile.py` 拼贴 `flint` + `amethyst_shard` | 废弃：拼接感太强、碎粒间距过大，不如生成版 |
 | `tools/ref/**` | 参考 | vanilla 客户端 jar + 本地模组 jar | **不进分发 jar**，仅作派生输入与回归基线 |
 | `tools/*.png` 对照图 | 工具产物 | 脚本生成 | 不进分发 jar |
 
