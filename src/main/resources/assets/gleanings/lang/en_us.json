@@ -1,5 +1,8 @@
 {
   "item.gleanings.washed_rotten_flesh": "Washed Rotten Flesh",
+  "item.gleanings.resonance_core": "Resonance Core",
+  "item.gleanings.resonance_tome": "Resonance Tome",
+  "item.gleanings.resonance_dregs": "Resonance Dregs",
   "message.gleanings.bell": "Day %1$s  ·  %2$s  ·  %3$s  ·  %4$s",
   "message.gleanings.moon.0": "Full Moon",
   "message.gleanings.moon.1": "Waning Gibbous",

@@ -19,6 +19,11 @@ public class Gleanings {
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.WASHED_ROTTEN_FLESH.get());
+            event.accept(ModItems.RESONANCE_CORE.get());
+            event.accept(ModItems.RESONANCE_DREGS.get());
+        }
+        if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+            event.accept(ModItems.RESONANCE_TOME.get());
         }
     }
 }
