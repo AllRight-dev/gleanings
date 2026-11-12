@@ -1,0 +1,15 @@
+{
+  "item.gleanings.washed_rotten_flesh": "Washed Rotten Flesh",
+  "message.gleanings.bell": "Day %1$s  ·  %2$s  ·  %3$s  ·  %4$s",
+  "message.gleanings.moon.0": "Full Moon",
+  "message.gleanings.moon.1": "Waning Gibbous",
+  "message.gleanings.moon.2": "Last Quarter",
+  "message.gleanings.moon.3": "Waning Crescent",
+  "message.gleanings.moon.4": "New Moon",
+  "message.gleanings.moon.5": "Waxing Crescent",
+  "message.gleanings.moon.6": "First Quarter",
+  "message.gleanings.moon.7": "Waxing Gibbous",
+  "message.gleanings.weather.0": "Clear",
+  "message.gleanings.weather.1": "Rain",
+  "message.gleanings.weather.2": "Thunder"
+}

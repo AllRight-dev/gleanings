@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gleanings:item/washed_rotten_flesh"
+  }
+}

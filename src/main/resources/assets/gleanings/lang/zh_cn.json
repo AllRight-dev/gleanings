@@ -1,0 +1,15 @@
+{
+  "item.gleanings.washed_rotten_flesh": "洗净的腐肉",
+  "message.gleanings.bell": "第 %1$s 天 · %2$s · %3$s · %4$s",
+  "message.gleanings.moon.0": "满月",
+  "message.gleanings.moon.1": "亏凸月",
+  "message.gleanings.moon.2": "下弦月",
+  "message.gleanings.moon.3": "残月",
+  "message.gleanings.moon.4": "新月",
+  "message.gleanings.moon.5": "娥眉月",
+  "message.gleanings.moon.6": "上弦月",
+  "message.gleanings.moon.7": "盈凸月",
+  "message.gleanings.weather.0": "晴",
+  "message.gleanings.weather.1": "雨",
+  "message.gleanings.weather.2": "雷暴"
+}
