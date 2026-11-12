@@ -21,8 +21,8 @@
 |---|---|---|---|
 | `textures/item/washed_rotten_flesh.png` | A | vanilla `item/rotten_flesh.png` → `tools/gen_texture.py`（去饱和 42% + 顶部冷色 + 三颗水珠） | — |
 | `textures/item/resonance_core.png` | A | vanilla `item/ender_pearl.png` → `tools/recolor.py`，目标色板取自 `item/amethyst_shard.png` | 早期版本派生自 Iron's Spellbooks（C 类），已废弃 |
-| `textures/item/resonance_tome.png` | A | vanilla `item/enchanted_book.png` → `tools/recolor.py`，色板同上 | — |
-| `textures/item/resonance_dregs.png` | A | vanilla `item/gunpowder.png` → `tools/recolor.py`，色板同上，压暗 0.95 | 早期版本派生自模组（C 类），已废弃 |
+| `textures/item/resonance_tome.png` | A | vanilla `item/enchanted_book.png` → `tools/recolor.py --colors "#33124f,#5a2190,#8a3ad0,#b45cf0,#d89bff,#f4e0ff"` | 六档显式色阶，比取色板更鲜艳 |
+| `textures/item/resonance_dregs.png` | A | `tools/compose_pile.py`：vanilla `flint` + `amethyst_shard` 裁成碎片拼成一堆，套紫水晶色板 | 生成模型对"碎渣"无稳定先验（画成水晶簇或 3D 立方体），故改用拼贴 |
 | `tools/ref/**` | 参考 | vanilla 客户端 jar + 本地模组 jar | **不进分发 jar**，仅作派生输入与回归基线 |
 | `tools/*.png` 对照图 | 工具产物 | 脚本生成 | 不进分发 jar |
 
