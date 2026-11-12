@@ -1,0 +1,7 @@
+# Keep line endings predictable across Windows edit / Linux CI build.
+* text=auto
+*.jar binary
+*.png binary
+gradlew text eol=lf
+*.bat text eol=crlf
+*.sh text eol=lf
