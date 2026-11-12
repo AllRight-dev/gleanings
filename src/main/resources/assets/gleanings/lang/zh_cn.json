@@ -3,6 +3,7 @@
   "item.gleanings.resonance_core": "共鸣晶核",
   "item.gleanings.resonance_tome": "共鸣附魔书",
   "item.gleanings.resonance_dregs": "共鸣残渣",
+  "tooltip.gleanings.resonance_core": "在砂轮上磨碎",
   "message.gleanings.bell": "第 %1$s 天 · %2$s · %3$s · %4$s",
   "message.gleanings.moon.0": "满月",
   "message.gleanings.moon.1": "亏凸月",

@@ -28,7 +28,7 @@ public final class AnvilEvents {
         ItemStack left = event.getLeft();
         ItemStack right = event.getRight();
 
-        if (left.is(Items.ENCHANTED_BOOK) && right.is(ModItems.RESONANCE_CORE.get())) {
+        if (left.is(Items.ENCHANTED_BOOK) && right.is(ModItems.RESONANCE_DREGS.get())) {
             ItemEnchantments carried = left.getOrDefault(DataComponents.STORED_ENCHANTMENTS, ItemEnchantments.EMPTY);
             if (carried.isEmpty()) {
                 return;

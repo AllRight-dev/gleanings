@@ -1,6 +1,7 @@
 package dev.gleanings.registry;
 
 import dev.gleanings.Gleanings;
+import dev.gleanings.item.ResonanceCoreItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -19,9 +20,11 @@ public final class ModItems {
     /**
      * What is left of a budding amethyst once the growth engine is taken apart.
      * A budding amethyst drops nothing in vanilla - this is the thing it drops now.
+     * Grind it on a grindstone to get the dregs that actually carry enchantments.
      */
     public static final DeferredItem<Item> RESONANCE_CORE =
-            ITEMS.registerSimpleItem("resonance_core", new Item.Properties().rarity(Rarity.UNCOMMON));
+            ITEMS.register("resonance_core",
+                    () -> new ResonanceCoreItem(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     /**
      * An enchanted book with its enchantment held in amethyst instead of paper.
