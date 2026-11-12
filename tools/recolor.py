@@ -21,14 +21,24 @@ def lum(c):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--src", required=True)
-    ap.add_argument("--palette", required=True)
+    ap.add_argument("--palette", default=None, help="reference sprite to take the ramp from")
+    ap.add_argument("--colors", default=None, help="explicit ramp, '#rrggbb,#rrggbb,...' (dark to light)")
     ap.add_argument("--out", required=True)
     ap.add_argument("--darken", type=float, default=1.0)
+    ap.add_argument("--specular", type=float, default=0.0,
+                    help="blend the brightest tones towards white, 0..1 - adds a highlight")
     a = ap.parse_args()
 
     src = Image.open(a.src).convert("RGBA")
-    pal_img = Image.open(a.palette).convert("RGBA")
-    target = sorted({c for c in pal_img.get_flattened_data() if c[3] > 0}, key=lum)
+    if a.colors:
+        target = []
+        for chunk in a.colors.split(","):
+            chunk = chunk.strip().lstrip("#")
+            target.append((int(chunk[0:2], 16), int(chunk[2:4], 16), int(chunk[4:6], 16), 255))
+        target.sort(key=lum)
+    else:
+        pal_img = Image.open(a.palette).convert("RGBA")
+        target = sorted({c for c in pal_img.get_flattened_data() if c[3] > 0}, key=lum)
     if not target:
         raise SystemExit("empty palette")
 
@@ -38,7 +48,12 @@ def main():
     for i, c in enumerate(used):
         t = target[round(i * (n_t - 1) / max(1, n_u - 1))]
         r, g, b = (min(255, max(0, int(v * a.darken))) for v in t[:3])
-        remap[c] = (r, g, b, 255)
+        if a.specular > 0 and n_u > 1 and i >= n_u * 0.75:
+            k = a.specular * ((i - n_u * 0.75) / max(1e-6, n_u * 0.25))
+            r = int(r + (255 - r) * k)
+            g = int(g + (255 - g) * k)
+            b = int(b + (255 - b) * k)
+        remap[c] = (min(255, r), min(255, g), min(255, b), 255)
 
     out = Image.new("RGBA", src.size, (0, 0, 0, 0))
     for y in range(src.height):
