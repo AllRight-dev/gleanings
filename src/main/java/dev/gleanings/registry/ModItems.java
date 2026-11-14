@@ -1,9 +1,13 @@
 package dev.gleanings.registry;
 
 import dev.gleanings.Gleanings;
+import dev.gleanings.item.EarplugsItem;
 import dev.gleanings.item.ResonanceBowItem;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.equipment.Equippable;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -49,6 +53,16 @@ public final class ModItems {
     public static final DeferredItem<Item> RESONANCE_BOW =
             ITEMS.register("resonance_bow",
                     () -> new ResonanceBowItem(new Item.Properties().durability(384).rarity(Rarity.RARE)));
+
+    /**
+     * Worn in the helmet slot: you can sleep with monsters around, and sonic
+     * damage is cut by 40%. The slot is the cost - no helmet while these are in.
+     */
+    public static final DeferredItem<Item> EARPLUGS =
+            ITEMS.register("earplugs", () -> new EarplugsItem(new Item.Properties()
+                    .stacksTo(1)
+                    .component(DataComponents.EQUIPPABLE,
+                            Equippable.builder(EquipmentSlot.HEAD).build())));
 
     private ModItems() {
     }

@@ -4,7 +4,8 @@
   "package": "dev.gleanings.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "AnvilMenuMixin"
+    "AnvilMenuMixin",
+    "ServerPlayerSleepMixin"
   ],
   "injectors": {
     "defaultRequire": 1
