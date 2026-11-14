@@ -5,6 +5,8 @@
   "item.gleanings.resonance_dregs": "Resonance Dregs",
   "item.gleanings.resonance_string": "Resonance String",
   "item.gleanings.resonance_bow": "Resonance Bow",
+  "enchantment.gleanings.piercing": "Piercing",
+  "enchantment.gleanings.guidance": "Guidance",
   "message.gleanings.bell": "Day %1$s  ·  %2$s  ·  %3$s  ·  %4$s",
   "message.gleanings.moon.0": "Full Moon",
   "message.gleanings.moon.1": "Waning Gibbous",

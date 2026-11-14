@@ -1,0 +1,7 @@
+{
+  "values": [
+    "#minecraft:enchantable/bow",
+    "#minecraft:enchantable/crossbow",
+    "gleanings:resonance_bow"
+  ]
+}
