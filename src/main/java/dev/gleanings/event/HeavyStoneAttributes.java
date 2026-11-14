@@ -3,7 +3,7 @@ package dev.gleanings.event;
 import dev.gleanings.Gleanings;
 import dev.gleanings.registry.ModBlocks;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -29,11 +29,11 @@ public final class HeavyStoneAttributes {
 
         event.addModifier(Attributes.KNOCKBACK_RESISTANCE,
                 new AttributeModifier(KNOCKBACK_ID, 0.99, AttributeModifier.Operation.ADD_VALUE),
-                EquipmentSlot.MAINHAND);
+                EquipmentSlotGroup.MAINHAND);
 
         event.addModifier(Attributes.MOVEMENT_SPEED,
                 new AttributeModifier(SPEED_ID, -0.9, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
-                EquipmentSlot.MAINHAND);
+                EquipmentSlotGroup.MAINHAND);
     }
 
     private static ResourceLocation id(String path) {

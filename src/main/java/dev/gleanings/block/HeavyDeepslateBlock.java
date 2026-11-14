@@ -25,6 +25,11 @@ public class HeavyDeepslateBlock extends FallingBlock {
     }
 
     @Override
+    protected com.mojang.serialization.MapCodec<? extends FallingBlock> codec() {
+        return simpleCodec(HeavyDeepslateBlock::new);
+    }
+
+    @Override
     protected void falling(FallingBlockEntity entity) {
         entity.setHurtsEntities(FALL_DAMAGE_PER_BLOCK, FALL_DAMAGE_CAP);
     }
@@ -39,9 +44,9 @@ public class HeavyDeepslateBlock extends FallingBlock {
      * Returning false tells vanilla the block survived, so no drop is produced.
      */
     @Override
-    protected boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos,
-                                         net.minecraft.world.entity.player.Player player,
-                                         boolean willHarvest, net.minecraft.world.level.material.FluidState fluid) {
+    public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos,
+                                       net.minecraft.world.entity.player.Player player,
+                                       boolean willHarvest, net.minecraft.world.level.material.FluidState fluid) {
         if (level.isClientSide) {
             return false;
         }
