@@ -1,6 +1,7 @@
 package dev.gleanings.registry;
 
 import dev.gleanings.Gleanings;
+import dev.gleanings.item.ResonanceBowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -36,6 +37,18 @@ public final class ModItems {
     /** What a worn-out tome crumbles into. Purpose not designed yet. */
     public static final DeferredItem<Item> RESONANCE_DREGS =
             ITEMS.registerSimpleItem("resonance_dregs", new Item.Properties());
+
+    /** Core ground with an echo shard: the string that carries resonance into a bow. */
+    public static final DeferredItem<Item> RESONANCE_STRING =
+            ITEMS.registerSimpleItem("resonance_string", new Item.Properties().rarity(Rarity.UNCOMMON));
+
+    /**
+     * Fires a small warden sonic boom. No arrows, pays in durability.
+     * 384 uses, same as a vanilla bow.
+     */
+    public static final DeferredItem<Item> RESONANCE_BOW =
+            ITEMS.register("resonance_bow",
+                    () -> new ResonanceBowItem(new Item.Properties().durability(384).rarity(Rarity.RARE)));
 
     private ModItems() {
     }

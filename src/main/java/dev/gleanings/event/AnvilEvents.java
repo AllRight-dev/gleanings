@@ -28,6 +28,24 @@ public final class AnvilEvents {
         ItemStack left = event.getLeft();
         ItemStack right = event.getRight();
 
+        // Vanilla bow + resonance string -> sonic bow. The anvil keeps the bow's
+        // existing enchantments and wear, which a crafting recipe would throw away.
+        if (left.is(Items.BOW) && right.is(ModItems.RESONANCE_STRING.get())) {
+            ItemStack out = new ItemStack(ModItems.RESONANCE_BOW.get());
+            ItemEnchantments carried = left.getOrDefault(DataComponents.ENCHANTMENTS, ItemEnchantments.EMPTY);
+            if (!carried.isEmpty()) {
+                out.set(DataComponents.ENCHANTMENTS, carried);
+            }
+            int wear = left.getOrDefault(DataComponents.DAMAGE, 0);
+            if (wear > 0) {
+                out.set(DataComponents.DAMAGE, wear);
+            }
+            event.setOutput(out);
+            event.setCost(3);
+            event.setMaterialCost(1);
+            return;
+        }
+
         if (left.is(Items.ENCHANTED_BOOK) && right.is(ModItems.RESONANCE_DREGS.get())) {
             ItemEnchantments carried = left.getOrDefault(DataComponents.STORED_ENCHANTMENTS, ItemEnchantments.EMPTY);
             if (carried.isEmpty()) {

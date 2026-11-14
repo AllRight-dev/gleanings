@@ -21,9 +21,13 @@ public class Gleanings {
             event.accept(ModItems.WASHED_ROTTEN_FLESH.get());
             event.accept(ModItems.RESONANCE_CORE.get());
             event.accept(ModItems.RESONANCE_DREGS.get());
+            event.accept(ModItems.RESONANCE_STRING.get());
         }
         if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             event.accept(ModItems.RESONANCE_TOME.get());
+        }
+        if (event.getTabKey() == CreativeModeTabs.COMBAT) {
+            event.accept(ModItems.RESONANCE_BOW.get());
         }
     }
 }
