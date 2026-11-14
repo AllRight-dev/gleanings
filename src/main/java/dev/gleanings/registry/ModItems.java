@@ -2,6 +2,7 @@ package dev.gleanings.registry;
 
 import dev.gleanings.Gleanings;
 import dev.gleanings.item.EarplugsItem;
+import dev.gleanings.item.HeavyShieldItem;
 import dev.gleanings.item.MiningHelmetItem;
 import dev.gleanings.item.ResonanceBowItem;
 import net.minecraft.world.item.Item;
@@ -62,6 +63,13 @@ public final class ModItems {
     /** A helmet with a lamp in it: level-15 light follows the wearer. */
     public static final DeferredItem<Item> MINING_HELMET =
             ITEMS.register("mining_helmet", () -> new MiningHelmetItem(new Item.Properties().stacksTo(1)));
+
+    /** A shield that blocks on its own, five hits at a time. */
+    public static final DeferredItem<Item> HEAVY_SHIELD =
+            ITEMS.register("heavy_shield", () -> new HeavyShieldItem(new Item.Properties()
+                    .stacksTo(1)
+                    .durability(HeavyShieldItem.BLOCKS_PER_CHARGE)
+                    .rarity(Rarity.RARE)));
 
     private ModItems() {
     }

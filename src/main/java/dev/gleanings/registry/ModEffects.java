@@ -1,12 +1,10 @@
 package dev.gleanings.registry;
 
 import dev.gleanings.Gleanings;
+import dev.gleanings.effect.HeavyPresenceEffect;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
@@ -24,12 +22,7 @@ public final class ModEffects {
      * there is no amplifier that lands on exactly 40%.
      */
     public static final Supplier<Holder<MobEffect>> HEAVY_PRESENCE = MOB_EFFECTS.register("heavy_presence",
-            () -> new MobEffect(MobEffectCategory.HARMFUL, 0x3A2A4A)
-                    .addAttributeModifier(Attributes.MOVEMENT_SPEED,
-                            net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(
-                                    Gleanings.MODID, "heavy_presence_speed"),
-                            -0.4,
-                            AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+            HeavyPresenceEffect::new);
 
     private ModEffects() {
     }

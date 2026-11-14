@@ -34,6 +34,7 @@ public class Gleanings {
             event.accept(ModItems.RESONANCE_BOW.get());
             event.accept(ModItems.EARPLUGS.get());
             event.accept(ModItems.MINING_HELMET.get());
+            event.accept(ModItems.HEAVY_SHIELD.get());
         }
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
             event.accept(ModBlocks.HEAVY_DEEPSLATE_ITEM.get());

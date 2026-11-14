@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "minecraft:shield"
+    },
+    {
+      "item": "gleanings:heavy_core"
+    }
+  ],
+  "result": {
+    "id": "gleanings:heavy_shield",
+    "count": 1
+  }
+}

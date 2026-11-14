@@ -36,6 +36,17 @@ public final class HeavyStoneAttributes {
                 EquipmentSlotGroup.MAINHAND);
     }
 
+    /** The heavy shield slows whoever carries it, in either hand. */
+    @SubscribeEvent
+    public static void onShieldAttributes(ItemAttributeModifierEvent event) {
+        if (!event.getItemStack().is(dev.gleanings.registry.ModItems.HEAVY_SHIELD.get())) {
+            return;
+        }
+        event.addModifier(Attributes.MOVEMENT_SPEED,
+                new AttributeModifier(id("heavy_shield_speed"), -0.2, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
+                EquipmentSlotGroup.HAND);
+    }
+
     private static ResourceLocation id(String path) {
         return ResourceLocation.fromNamespaceAndPath(Gleanings.MODID, path);
     }
