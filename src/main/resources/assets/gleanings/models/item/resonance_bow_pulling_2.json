@@ -1,5 +1,5 @@
-{
-  "parent": "minecraft:item/generated",
+﻿{
+  "parent": "gleanings:item/resonance_bow",
   "textures": {
     "layer0": "gleanings:item/resonance_bow_pulling_2"
   }
