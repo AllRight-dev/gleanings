@@ -38,6 +38,9 @@ neoForge {
             sourceSet(sourceSets.main)
         }
     }
+
+    // Lets us call AbstractArrow#setPierceLevel, which is private in 1.21.1.
+    accessTransformers = project.files('src/main/resources/META-INF/accesstransformer.cfg')
 }
 
 // Expands ${...} placeholders in src/main/templates into the final neoforge.mods.toml.

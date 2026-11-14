@@ -67,6 +67,39 @@ public class ResonanceBowItem extends Item {
     }
 
     @Override
+    public void onUseTick(Level level, LivingEntity entity, ItemStack stack, int remainingUseDuration) {
+        if (!level.isClientSide) {
+            return;
+        }
+
+        int charge = this.getUseDuration(stack, entity) - remainingUseDuration;
+        float progress = Math.min(1.0F, charge / (float) CHARGE_TICKS_FULL);
+        if (progress < 0.12F) {
+            return;
+        }
+
+        // A ball of dark blue energy condensing in front of the bow, tightening as
+        // the draw completes. Client only - it is decoration, not state.
+        Vec3 look = entity.getLookAngle();
+        Vec3 hand = entity.getEyePosition().add(look.scale(0.5)).add(0.0, -0.18, 0.0);
+
+        int count = 1 + (int) (progress * 3.0F);
+        double radius = 0.18 * (1.05 - progress);
+
+        for (int i = 0; i < count; i++) {
+            double ox = (level.random.nextDouble() - 0.5) * 2.0 * radius;
+            double oy = (level.random.nextDouble() - 0.5) * 2.0 * radius;
+            double oz = (level.random.nextDouble() - 0.5) * 2.0 * radius;
+            level.addParticle(ParticleTypes.SCULK_SOUL,
+                    hand.x + ox, hand.y + oy, hand.z + oz, 0.0, 0.0, 0.0);
+        }
+
+        if (progress > 0.97F && charge % 5 == 0) {
+            level.addParticle(ParticleTypes.SONIC_BOOM, hand.x, hand.y, hand.z, 0.0, 0.0, 0.0);
+        }
+    }
+
+    @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int timeLeft) {
         if (!(entity instanceof Player player) || level.isClientSide) {
             return;
