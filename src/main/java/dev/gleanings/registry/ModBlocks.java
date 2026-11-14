@@ -29,7 +29,7 @@ public final class ModBlocks {
      * of a beacon to do anything.
      */
     public static final DeferredBlock<Block> HEAVY_CORE = BLOCKS.register("heavy_core",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE)
+            () -> new dev.gleanings.block.HeavyCoreBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE)
                     .strength(8.0F, 1200.0F)
                     .requiresCorrectToolForDrops()));
 

@@ -5,8 +5,7 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "AnvilMenuMixin",
-    "ServerPlayerSleepMixin",
-    "BeaconBeamMixin"
+    "ServerPlayerSleepMixin"
   ],
   "injectors": {
     "defaultRequire": 1

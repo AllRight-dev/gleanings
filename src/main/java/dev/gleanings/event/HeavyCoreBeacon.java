@@ -77,7 +77,7 @@ public final class HeavyCoreBeacon {
         AABB field = new AABB(beaconPos).inflate(range).expandTowards(0.0, level.getHeight(), 0.0);
 
         for (Mob mob : level.getEntitiesOfClass(Mob.class, field, m -> m.isAlive())) {
-            mob.addEffect(new MobEffectInstance(ModEffects.HEAVY_PRESENCE.get(), EFFECT_TICKS, 0,
+            mob.addEffect(new MobEffectInstance(ModEffects.HEAVY_PRESENCE, EFFECT_TICKS, 0,
                     false, false, false));
         }
     }

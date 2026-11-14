@@ -2,12 +2,10 @@ package dev.gleanings.registry;
 
 import dev.gleanings.Gleanings;
 import dev.gleanings.effect.HeavyPresenceEffect;
-import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffect;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-
-import java.util.function.Supplier;
 
 public final class ModEffects {
 
@@ -21,8 +19,8 @@ public final class ModEffects {
      * An attribute modifier rather than vanilla Slow: Slow comes in 15% steps, so
      * there is no amplifier that lands on exactly 40%.
      */
-    public static final Supplier<Holder<MobEffect>> HEAVY_PRESENCE = MOB_EFFECTS.register("heavy_presence",
-            HeavyPresenceEffect::new);
+    public static final DeferredHolder<MobEffect, MobEffect> HEAVY_PRESENCE =
+            MOB_EFFECTS.register("heavy_presence", HeavyPresenceEffect::new);
 
     private ModEffects() {
     }
