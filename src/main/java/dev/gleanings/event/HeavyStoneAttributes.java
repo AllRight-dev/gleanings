@@ -67,6 +67,15 @@ public final class HeavyStoneAttributes {
                         dev.gleanings.item.WingedBootsItem.STEP_BONUS,
                         AttributeModifier.Operation.ADD_VALUE),
                 EquipmentSlotGroup.FEET);
+
+        // Vanilla jump fires on the first tick of the key being held, which makes a
+        // charge impossible. Cancelling jump strength keeps the wearer grounded while
+        // the key is down; WingedBootsCharge supplies the real launch on release.
+        event.addModifier(Attributes.JUMP_STRENGTH,
+                new AttributeModifier(id("winged_boots_jump_cancel"),
+                        -1.0,
+                        AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
+                EquipmentSlotGroup.FEET);
     }
 
     private static ResourceLocation id(String path) {

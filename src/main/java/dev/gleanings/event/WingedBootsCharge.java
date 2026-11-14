@@ -1,7 +1,6 @@
 package dev.gleanings.event;
 
 import dev.gleanings.Gleanings;
-import dev.gleanings.item.WingedBootsItem;
 import dev.gleanings.registry.ModItems;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -19,18 +18,20 @@ import java.util.UUID;
 /**
  * Charge-jump on the winged boots.
  *
- * Holding the jump key while standing charges for up to half a second; letting go
- * launches up to three blocks. The key state is already synced to the server
- * (Player#jumping), so no packets of our own are needed.
+ * Vanilla "hold jump" is not a charge - it jumps on the first tick. So the boots
+ * also drive JUMP_STRENGTH to zero (see HeavyStoneAttributes), which keeps the
+ * wearer planted while the key is held. Only then can a charge accumulate; on
+ * release we supply the actual velocity ourselves.
  *
- * A jump costs one durability, which is what gives the phantom-membrane repair
- * something to repair.
+ * A tap therefore produces a small hop instead of nothing, which is what a jump
+ * key is expected to do.
  */
 @EventBusSubscriber(modid = Gleanings.MODID)
 public final class WingedBootsCharge {
 
-    private static final int FULL_CHARGE_TICKS = 10;      // 0.5s
-    private static final double MAX_LAUNCH = 0.68;        // ~3 blocks
+    private static final int FULL_CHARGE_TICKS = 10;   // 0.5s
+    private static final double MAX_LAUNCH = 0.78;     // ~3 blocks with the boots' feel
+    private static final double MIN_LAUNCH = 0.42;     // a plain vanilla hop
     private static final Map<UUID, Integer> CHARGE = new HashMap<>();
 
     @SubscribeEvent
@@ -40,33 +41,28 @@ public final class WingedBootsCharge {
         }
 
         ItemStack boots = player.getItemBySlot(EquipmentSlot.FEET);
-        boolean wearing = boots.is(ModItems.WINGED_BOOTS.get());
         UUID id = player.getUUID();
 
-        if (!wearing) {
+        if (!boots.is(ModItems.WINGED_BOOTS.get())) {
             CHARGE.remove(id);
             return;
         }
 
-        boolean charging = player.jumping && player.onGround();
-
-        if (charging) {
+        if (player.jumping && player.onGround()) {
             CHARGE.merge(id, 1, Integer::sum);
             return;
         }
 
         int held = CHARGE.getOrDefault(id, 0);
         CHARGE.remove(id);
+
         if (held <= 0 || !player.onGround()) {
             return;
         }
 
         float power = Math.min(1.0F, held / (float) FULL_CHARGE_TICKS);
-        if (power < 0.15F) {
-            return;
-        }
+        double launch = MIN_LAUNCH + (MAX_LAUNCH - MIN_LAUNCH) * power;
 
-        double launch = MAX_LAUNCH * power;
         var velocity = player.getDeltaMovement();
         player.setDeltaMovement(velocity.x, launch, velocity.z);
         player.hurtMarked = true;
