@@ -27,15 +27,15 @@
   },
   "overrides": [
     {
-      "predicate": { "pulling": 1 },
+      "predicate": { "gleanings:pulling": 1 },
       "model": "gleanings:item/resonance_bow_pulling_0"
     },
     {
-      "predicate": { "pulling": 1, "pull": 0.65 },
+      "predicate": { "gleanings:pulling": 1, "gleanings:pull": 0.65 },
       "model": "gleanings:item/resonance_bow_pulling_1"
     },
     {
-      "predicate": { "pulling": 1, "pull": 0.9 },
+      "predicate": { "gleanings:pulling": 1, "gleanings:pull": 0.9 },
       "model": "gleanings:item/resonance_bow_pulling_2"
     }
   ]
