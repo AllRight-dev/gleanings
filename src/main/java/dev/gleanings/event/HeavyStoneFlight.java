@@ -41,7 +41,7 @@ public final class HeavyStoneFlight {
 
         player.stopFallFlying();
         player.level().playSound(null, player.blockPosition(),
-                SoundEvents.ELYTRA_HURT, SoundSource.PLAYERS, 0.8F, 0.6F);
+                SoundEvents.ELYTRA_FLYING, SoundSource.PLAYERS, 0.8F, 0.6F);
 
         // No damage is applied on purpose: the fall that follows is the punishment.
         player.hurtMarked = true;
