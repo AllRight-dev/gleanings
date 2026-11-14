@@ -2,6 +2,7 @@ package dev.gleanings.registry;
 
 import dev.gleanings.Gleanings;
 import dev.gleanings.item.EarplugsItem;
+import dev.gleanings.item.MiningHelmetItem;
 import dev.gleanings.item.ResonanceBowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -57,6 +58,10 @@ public final class ModItems {
      */
     public static final DeferredItem<Item> EARPLUGS =
             ITEMS.register("earplugs", () -> new EarplugsItem(new Item.Properties().stacksTo(1)));
+
+    /** A helmet with a lamp in it: level-15 light follows the wearer. */
+    public static final DeferredItem<Item> MINING_HELMET =
+            ITEMS.register("mining_helmet", () -> new MiningHelmetItem(new Item.Properties().stacksTo(1)));
 
     private ModItems() {
     }

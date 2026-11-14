@@ -1,5 +1,6 @@
 package dev.gleanings;
 
+import dev.gleanings.registry.ModBlocks;
 import dev.gleanings.registry.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.bus.api.IEventBus;
@@ -13,6 +14,7 @@ public class Gleanings {
 
     public Gleanings(IEventBus modBus, ModContainer container) {
         ModItems.ITEMS.register(modBus);
+        ModBlocks.BLOCKS.register(modBus);
         modBus.addListener(this::addCreative);
     }
 
