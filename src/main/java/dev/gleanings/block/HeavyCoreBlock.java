@@ -18,7 +18,7 @@ public class HeavyCoreBlock extends Block implements BeaconBeamBlock {
     }
 
     @Override
-    public DyeColor getBeamColor() {
+    public DyeColor getColor() {
         return DyeColor.PURPLE;
     }
 }
