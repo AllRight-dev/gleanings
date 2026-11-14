@@ -1,6 +1,7 @@
 package dev.gleanings;
 
 import dev.gleanings.registry.ModBlocks;
+import dev.gleanings.registry.ModEffects;
 import dev.gleanings.registry.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.bus.api.IEventBus;
@@ -15,6 +16,7 @@ public class Gleanings {
     public Gleanings(IEventBus modBus, ModContainer container) {
         ModItems.ITEMS.register(modBus);
         ModBlocks.BLOCKS.register(modBus);
+        ModEffects.MOB_EFFECTS.register(modBus);
         modBus.addListener(this::addCreative);
     }
 
@@ -35,6 +37,7 @@ public class Gleanings {
         }
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
             event.accept(ModBlocks.HEAVY_DEEPSLATE_ITEM.get());
+            event.accept(ModBlocks.HEAVY_CORE_ITEM.get());
         }
     }
 }

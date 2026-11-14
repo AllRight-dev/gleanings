@@ -3,6 +3,7 @@ package dev.gleanings.registry;
 import dev.gleanings.Gleanings;
 import dev.gleanings.block.HeavyDeepslateBlock;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -22,6 +23,18 @@ public final class ModBlocks {
 
     public static final DeferredItem<BlockItem> HEAVY_DEEPSLATE_ITEM =
             ModItems.ITEMS.registerSimpleBlockItem(HEAVY_DEEPSLATE);
+
+    /**
+     * The heavy core is a block, not just a trinket: it has to be placeable on top
+     * of a beacon to do anything.
+     */
+    public static final DeferredBlock<Block> HEAVY_CORE = BLOCKS.register("heavy_core",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE)
+                    .strength(8.0F, 1200.0F)
+                    .requiresCorrectToolForDrops()));
+
+    public static final DeferredItem<BlockItem> HEAVY_CORE_ITEM =
+            ModItems.ITEMS.registerSimpleBlockItem(HEAVY_CORE);
 
     private ModBlocks() {
     }
