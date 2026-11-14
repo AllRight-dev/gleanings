@@ -47,6 +47,28 @@ public final class HeavyStoneAttributes {
                 EquipmentSlotGroup.HAND);
     }
 
+    /**
+     * Winged boots: one armour point (iron boots give two) and step height 1.0,
+     * which is what "walks up a full block without slowing down" actually is.
+     */
+    @SubscribeEvent
+    public static void onBootsAttributes(ItemAttributeModifierEvent event) {
+        if (!event.getItemStack().is(dev.gleanings.registry.ModItems.WINGED_BOOTS.get())) {
+            return;
+        }
+        event.addModifier(Attributes.ARMOR,
+                new AttributeModifier(id("winged_boots_armor"),
+                        dev.gleanings.item.WingedBootsItem.ARMOR_POINTS,
+                        AttributeModifier.Operation.ADD_VALUE),
+                EquipmentSlotGroup.FEET);
+
+        event.addModifier(Attributes.STEP_HEIGHT,
+                new AttributeModifier(id("winged_boots_step"),
+                        dev.gleanings.item.WingedBootsItem.STEP_BONUS,
+                        AttributeModifier.Operation.ADD_VALUE),
+                EquipmentSlotGroup.FEET);
+    }
+
     private static ResourceLocation id(String path) {
         return ResourceLocation.fromNamespaceAndPath(Gleanings.MODID, path);
     }

@@ -5,6 +5,7 @@ import dev.gleanings.item.EarplugsItem;
 import dev.gleanings.item.HeavyShieldItem;
 import dev.gleanings.item.MiningHelmetItem;
 import dev.gleanings.item.ResonanceBowItem;
+import dev.gleanings.item.WingedBootsItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -70,6 +71,13 @@ public final class ModItems {
                     .stacksTo(1)
                     .durability(HeavyShieldItem.BLOCKS_PER_CHARGE)
                     .rarity(Rarity.RARE)));
+
+    /** Boots that step up a full block and charge-jump three. Repair with membranes. */
+    public static final DeferredItem<Item> WINGED_BOOTS =
+            ITEMS.register("winged_boots", () -> new WingedBootsItem(new Item.Properties()
+                    .stacksTo(1)
+                    .durability(200)
+                    .rarity(Rarity.UNCOMMON)));
 
     private ModItems() {
     }

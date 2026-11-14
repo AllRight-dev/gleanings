@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "L": {
+      "item": "minecraft:leather_boots"
+    },
+    "M": {
+      "item": "minecraft:phantom_membrane"
+    },
+    "F": {
+      "item": "minecraft:feather"
+    }
+  },
+  "pattern": [
+    "MFM",
+    " L "
+  ],
+  "result": {
+    "id": "gleanings:winged_boots",
+    "count": 1
+  }
+}
