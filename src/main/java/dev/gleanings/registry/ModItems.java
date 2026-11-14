@@ -3,11 +3,8 @@ package dev.gleanings.registry;
 import dev.gleanings.Gleanings;
 import dev.gleanings.item.EarplugsItem;
 import dev.gleanings.item.ResonanceBowItem;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.equipment.Equippable;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -59,10 +56,7 @@ public final class ModItems {
      * damage is cut by 40%. The slot is the cost - no helmet while these are in.
      */
     public static final DeferredItem<Item> EARPLUGS =
-            ITEMS.register("earplugs", () -> new EarplugsItem(new Item.Properties()
-                    .stacksTo(1)
-                    .component(DataComponents.EQUIPPABLE,
-                            Equippable.builder(EquipmentSlot.HEAD).build())));
+            ITEMS.register("earplugs", () -> new EarplugsItem(new Item.Properties().stacksTo(1)));
 
     private ModItems() {
     }

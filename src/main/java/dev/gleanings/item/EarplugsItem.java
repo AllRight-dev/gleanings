@@ -5,6 +5,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Equipable;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -19,12 +20,21 @@ import java.util.List;
  *   - you can sleep with monsters nearby
  *   - sonic damage is reduced by 40%
  */
-public class EarplugsItem extends Item {
+public class EarplugsItem extends Item implements Equipable {
 
     public static final float SONIC_DAMAGE_MULTIPLIER = 0.6F;
 
     public EarplugsItem(Properties properties) {
         super(properties);
+    }
+
+    /**
+     * Declaring the slot is what lets the item sit in the helmet slot at all:
+     * vanilla's armour slot checks Equipable#getEquipmentSlot.
+     */
+    @Override
+    public EquipmentSlot getEquipmentSlot() {
+        return EquipmentSlot.HEAD;
     }
 
     public static boolean isWorn(LivingEntity entity) {
