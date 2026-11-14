@@ -130,6 +130,28 @@
 
 ---
 
+## E08 · ① 编造 API —— `setPierceLevel` 是 private，AccessTransformer 又写错描述符
+
+**现象**：连续两次构建红。
+1. `error: setPierceLevel(byte) has private access in AbstractArrow`
+2. 加 AT 后：`Invalid method descriptor '(B)' at line 4`
+
+**根因**：
+- 我以为「原版给弩实现过穿透，弓应该也能直接调」—— 方法存在，但权限是 private。**编译期才暴露，记忆里是「有这个方法」而不是「我能调它」。**
+- AT 规则格式：`<access> <class> <member>`，方法成员**必须带完整描述符，含返回类型**。`(B)` 表示「参数 byte、无返回值」是错的，正确的是 `(B)V`。
+
+**怎么被抓到**：CI 编译（第一次）+ NeoForm 的 AT 解析器（第二次）。
+
+**修法**：
+```
+public net.minecraft.world.entity.projectile.AbstractArrow setPierceLevel(B)V
+```
+并在 `build.gradle` 的 `neoForge { }` 里接上 `accessTransformers`。
+
+**教训**：**「这个 API 存在」和「这个 API 能调」是两件事。** 前者靠记忆，后者只能靠编译器。
+
+---
+
 # 待观察（还没翻，但我知道它可能翻）
 
 - `data/gleanings/recipe/*.json` 里 `"result": {"id": ..., "count": 1}` 是 1.20.5+ 的写法。
