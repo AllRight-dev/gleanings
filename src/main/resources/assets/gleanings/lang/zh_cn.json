@@ -8,6 +8,7 @@
   "item.gleanings.earplugs": "耳塞",
   "block.gleanings.heavy_deepslate": "沉重石",
   "item.gleanings.mining_helmet": "挖掘头盔",
+  "item.gleanings.heavy_core": "沉重核心",
   "tooltip.gleanings.mining_helmet": "戴在头盔栏：自带光源",
   "tooltip.gleanings.earplugs.sleep": "戴在头盔栏：附近有怪物也能入睡",
   "tooltip.gleanings.earplugs.sonic": "受到的音波伤害 -40%",

@@ -8,6 +8,7 @@
   "item.gleanings.earplugs": "Earplugs",
   "block.gleanings.heavy_deepslate": "Heavy Deepslate",
   "item.gleanings.mining_helmet": "Mining Helmet",
+  "item.gleanings.heavy_core": "Heavy Core",
   "tooltip.gleanings.mining_helmet": "Worn in the helmet slot: carries its own light",
   "tooltip.gleanings.earplugs.sleep": "Worn in the helmet slot: sleep through nearby monsters",
   "tooltip.gleanings.earplugs.sonic": "Sonic damage taken: -40%",

@@ -13,11 +13,11 @@ public final class ModBlocks {
 
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Gleanings.MODID);
 
-    /** A darker, much heavier deepslate. Falls, hurts, refuses to be mined. */
+    /** A darker, much heavier deepslate. Falls, hurts, and takes forever to mine. */
     public static final DeferredBlock<HeavyDeepslateBlock> HEAVY_DEEPSLATE = BLOCKS.register(
             "heavy_deepslate",
             () -> new HeavyDeepslateBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE)
-                    .strength(50.0F, 1200.0F)
+                    .strength(150.0F, 3600.0F)   // obsidian is 50 / 1200
                     .requiresCorrectToolForDrops()));
 
     public static final DeferredItem<BlockItem> HEAVY_DEEPSLATE_ITEM =

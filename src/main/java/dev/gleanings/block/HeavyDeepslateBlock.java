@@ -1,18 +1,14 @@
 package dev.gleanings.block;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.item.FallingBlockEntity;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.FallingBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 /**
- * Deepslate that is heavier than it looks: it falls like sand, hits like an anvil,
- * and will not let itself be mined - it slips away instead (see
- * playerWillDestroy). The only reliable way to take one is to let it fall onto a
- * torch, the same trick that works on a dragon egg.
+ * Deepslate that is heavier than it looks: it falls like sand and hits like an
+ * anvil. Getting one out is simply a matter of time - it is set to three times
+ * obsidian's hardness - and it crumbles into a heavy core when it finally breaks
+ * (see the loot table).
  */
 public class HeavyDeepslateBlock extends FallingBlock {
 
@@ -35,43 +31,8 @@ public class HeavyDeepslateBlock extends FallingBlock {
     }
 
     @Override
-    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+    public void animateTick(BlockState state, net.minecraft.world.level.Level level,
+                            net.minecraft.core.BlockPos pos, net.minecraft.util.RandomSource random) {
         // Nothing: it is stone. Kept explicit so nobody adds particles by accident.
-    }
-
-    /**
-     * Breaking it moves it rather than yielding it, exactly like a dragon egg.
-     * Returning false tells vanilla the block survived, so no drop is produced.
-     */
-    @Override
-    public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos,
-                                       net.minecraft.world.entity.player.Player player,
-                                       boolean willHarvest, net.minecraft.world.level.material.FluidState fluid) {
-        if (level.isClientSide) {
-            return false;
-        }
-
-        BlockState moving = level.getBlockState(pos);
-        for (int attempt = 0; attempt < 1000; attempt++) {
-            BlockPos target = pos.offset(
-                    RandomSource.create().nextInt(16) - RandomSource.create().nextInt(16),
-                    RandomSource.create().nextInt(8) - RandomSource.create().nextInt(8),
-                    RandomSource.create().nextInt(16) - RandomSource.create().nextInt(16));
-
-            if (!level.isEmptyBlock(target)) {
-                continue;
-            }
-            if (level instanceof ServerLevel server && !server.isPositionEntityTicking(target)) {
-                continue;
-            }
-
-            level.setBlockAndUpdate(pos, net.minecraft.world.level.block.Blocks.AIR.defaultBlockState());
-            level.setBlockAndUpdate(target, moving);
-            level.levelEvent(2001, pos, net.minecraft.world.level.block.Block.getId(state));
-            return false;
-        }
-
-        // Nowhere to slip to: let it break normally rather than eat the click.
-        return super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);
     }
 }

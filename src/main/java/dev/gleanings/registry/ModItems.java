@@ -63,6 +63,10 @@ public final class ModItems {
     public static final DeferredItem<Item> MINING_HELMET =
             ITEMS.register("mining_helmet", () -> new MiningHelmetItem(new Item.Properties().stacksTo(1)));
 
+    /** What a heavy deepslate leaves behind. Use not designed yet. */
+    public static final DeferredItem<Item> HEAVY_CORE =
+            ITEMS.registerSimpleItem("heavy_core", new Item.Properties().rarity(Rarity.RARE));
+
     private ModItems() {
     }
 }
