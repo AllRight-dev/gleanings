@@ -44,7 +44,7 @@
     },
     {
       "bonus_rolls": 0.0,
-      "rolls": 1.0,
+      "rolls": 0.2,
       "entries": [
         {
           "type": "minecraft:loot_table",
