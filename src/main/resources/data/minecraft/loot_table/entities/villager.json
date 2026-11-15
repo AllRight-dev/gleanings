@@ -44,7 +44,7 @@
     },
     {
       "bonus_rolls": 0.0,
-      "rolls": 0.2,
+      "rolls": 1.0,
       "entries": [
         {
           "type": "minecraft:loot_table",
@@ -125,6 +125,10 @@
               "is_baby": false
             }
           }
+        },
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.2
         }
       ]
     }
